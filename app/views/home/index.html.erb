@@ -1,5 +1,11 @@
-<div>
-  <h1 class="font-bold text-4xl">Splash screen</h1>
-  <%= link_to "Sign up", new_user_registration_path %>
-  <%= link_to "Log in", new_user_session_path %>
+<div class="w-full h-screen">
+  <h1 class="font-bold text-4xl ">PennyWise</h1>
+  <div class="flex flex-col gap-4 mt-28">
+    <div class="p-3 flex justify-center bg-main-color text-white">
+      <%= link_to "Sign up", new_user_registration_path %>
+    </div>
+    <div class="p-3 flex justify-center text-gray-400">
+      <%= link_to "Log in", new_user_session_path %>
+    </div> 
+  </div>
 </div>
