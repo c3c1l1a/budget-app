@@ -26,6 +26,17 @@ RSpec.describe "/expenses", type: :request do
     end
   end
 
+  describe "GET /new" do
+    it "renders a successful response" do
+      user = create(:user)
+      sign_in user
+      get root_path
+      
+      get new_expense_url
+      expect(response).to be_successful
+    end
+  end
+
   describe "GET /show" do
     it "renders a successful response" do
       expense = Expense.create! valid_attributes
@@ -34,12 +45,7 @@ RSpec.describe "/expenses", type: :request do
     end
   end
 
-  describe "GET /new" do
-    it "renders a successful response" do
-      get new_expense_url
-      expect(response).to be_successful
-    end
-  end
+  
 
   describe "GET /edit" do
     it "renders a successful response" do
