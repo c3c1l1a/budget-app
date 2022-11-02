@@ -60,6 +60,10 @@ RSpec.describe Expense, type: :model do
     expect(subject).to_not be_valid
   end
 
-  it 'amount should not be nil' 
+  it 'amount should not be nil' do 
+    subject.amount = nil
+    expect(subject).to_not be_valid
+  end 
+
 end
 
