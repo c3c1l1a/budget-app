@@ -14,11 +14,13 @@ RSpec.describe "/expenses", type: :request do
     skip("Add a hash of attributes invalid for your model")
   }
 
+
   describe "GET /index" do
     it "renders a successful response" do
       user = create(:user)
       sign_in user
-      Expense.create! valid_attributes
+      get root_path
+
       get expenses_url
       expect(response).to be_successful
     end
