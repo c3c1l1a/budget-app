@@ -6,8 +6,18 @@ RSpec.describe "/expenses", type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Expense. As you add validations to Expense, be sure to
   # adjust the attributes here as well.
+  let(:user) {
+    user = create(:user)
+  }
+
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+        "name"=>"Mc Donalds", 
+        "description"=>"Expenses in Mc Donalds", 
+        "icon"=>"icon", 
+        "amount"=>"200", 
+        "user"=>user
+    }
   }
 
   let(:invalid_attributes) {
@@ -17,7 +27,6 @@ RSpec.describe "/expenses", type: :request do
 
   describe "GET /index" do
     it "renders a successful response" do
-      user = create(:user)
       sign_in user
       get root_path
 
@@ -28,7 +37,6 @@ RSpec.describe "/expenses", type: :request do
 
   describe "GET /new" do
     it "renders a successful response" do
-      user = create(:user)
       sign_in user
       get root_path
       
@@ -46,7 +54,6 @@ RSpec.describe "/expenses", type: :request do
   end
 
   
-
   describe "GET /edit" do
     it "renders a successful response" do
       expense = Expense.create! valid_attributes
@@ -58,6 +65,9 @@ RSpec.describe "/expenses", type: :request do
   describe "POST /create" do
     context "with valid parameters" do
       it "creates a new Expense" do
+        sign_in user
+        get root_path
+
         expect {
           post expenses_url, params: { expense: valid_attributes }
         }.to change(Expense, :count).by(1)
