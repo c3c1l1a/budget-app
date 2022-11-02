@@ -10,6 +10,11 @@ RSpec.describe "/expenses", type: :request do
     user = create(:user)
   }
 
+  before(:each ) {
+    sign_in user
+    get root_path
+  }
+
   let(:valid_attributes) {
     {
         "name"=>"Mc Donalds", 
@@ -27,9 +32,6 @@ RSpec.describe "/expenses", type: :request do
 
   describe "GET /index" do
     it "renders a successful response" do
-      sign_in user
-      get root_path
-
       get expenses_url
       expect(response).to be_successful
     end
@@ -37,9 +39,6 @@ RSpec.describe "/expenses", type: :request do
 
   describe "GET /new" do
     it "renders a successful response" do
-      sign_in user
-      get root_path
-      
       get new_expense_url
       expect(response).to be_successful
     end
@@ -65,9 +64,6 @@ RSpec.describe "/expenses", type: :request do
   describe "POST /create" do
     context "with valid parameters" do
       it "creates a new Expense" do
-        sign_in user
-        get root_path
-
         expect {
           post expenses_url, params: { expense: valid_attributes }
         }.to change(Expense, :count).by(1)
