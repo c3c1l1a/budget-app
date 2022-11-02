@@ -18,7 +18,7 @@ RSpec.describe "/expenses", type: :request do
         "description"=>"Expenses in Mc Donalds", 
         "icon"=>"icon", 
         "amount"=>"200", 
-        "user"=>user
+        "user_id"=>user.id
     }
   }
 
