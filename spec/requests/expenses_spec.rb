@@ -22,7 +22,12 @@ RSpec.describe "/expenses", type: :request do
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+        "name"=>"", 
+        "description"=>"", 
+        "icon"=>"", 
+        "amount"=>"-2"
+    }
   }
 
 
@@ -42,7 +47,9 @@ RSpec.describe "/expenses", type: :request do
 
   describe "GET /show" do
     it "renders a successful response" do
+      valid_attributes['user_id'] = user.id
       expense = Expense.create! valid_attributes
+      
       get expense_url(expense)
       expect(response).to be_successful
     end
