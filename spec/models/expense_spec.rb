@@ -40,7 +40,11 @@ RSpec.describe Expense, type: :model do
     expect(subject).to_not be_valid
   end 
 
-  it 'description should be present'
+  it 'description should be present' do
+    subject.description = nil
+    expect(subject).to_not be_valid 
+  end
+  
   it 'description should not be blank'
   it 'description should longer than 3 characters'
   it 'amount should not be less than 0'
