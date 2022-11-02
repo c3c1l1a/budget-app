@@ -30,8 +30,11 @@ RSpec.describe Expense, type: :model do
     expect(subject).to_not be_valid 
   end 
 
-  
-  it 'icon should not be blank'
+  it 'icon should not be blank' do 
+    subject.icon = ''
+    expect(subject).to_not be_valid
+  end
+
   it 'icon should longer than 3 characters'
   it 'description should be present'
   it 'description should not be blank'
