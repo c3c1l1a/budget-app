@@ -49,8 +49,12 @@ RSpec.describe Expense, type: :model do
     subject.description = ''
     expect(subject).to_not be_valid
   end 
+
+  it 'description should longer than 3 characters' do 
+    subject.description = 'de'
+    expect(subject).to_not be_valid
+  end 
   
-  it 'description should longer than 3 characters'
   it 'amount should not be less than 0'
   it 'amount should not be nil' 
 end
