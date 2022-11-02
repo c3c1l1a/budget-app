@@ -2,10 +2,7 @@ require 'rails_helper'
 require_relative '../support/devise'
 
 RSpec.describe "/expenses", type: :request do
-  
-  # This should return the minimal set of attributes required to create a valid
-  # Expense. As you add validations to Expense, be sure to
-  # adjust the attributes here as well.
+
   let(:user) {
     user = create(:user)
   }
