@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :expenses
-  resources :home, only: %i[index]
+  resources :home, path: '/', only: %i[index]
   devise_for :users, path: '/', path_names: {
     sign_in: 'login'
   }, controllers: {
