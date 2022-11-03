@@ -1,4 +1,4 @@
-<div class="w-full flex flex-col">
+<div class="w-full flex flex-col relative">
   <div class="flex items-center bg-main-color py-2">
     <%= link_to '/' do %>
       <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" class="scale-75 fill-white "><path d="M24 40 8 24 24 8l2.1 2.1-12.4 12.4H40v3H13.7l12.4 12.4Z"/></svg>
@@ -17,10 +17,11 @@
       <%= f.password_field :password, autocomplete: "current-password", placeholder: 'Password',
                                 class: 'w-full p-3 shadow-inner border-y-slate-300 border-x-transparent font-proxima'
                             %>
-
-      <div class="p-3 flex justify-center bg-main-color text-white  w-full bg-second-color">
-        <%= f.submit "Log in", class: "font-proxima w-11/12 p-3 border-2 border-white rounded font-semibold text-lg"  %>
+      <div class="right-4 top-2 py-2 h-12 flex absolute">
+        <%= f.submit "Login", class: "font-proxima font-light text-white"  %>
       </div>
+        
+    
       
 
 
