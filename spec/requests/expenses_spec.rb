@@ -98,14 +98,20 @@ RSpec.describe "/expenses", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+            "name"=>"Mc Donalds", 
+            "description"=>"Expenses in Mc Donalds", 
+            "icon"=>"icon", 
+            "amount"=>"230"
+        }
       }
 
       it "updates the requested expense" do
+        valid_attributes['user_id'] = user.id
         expense = Expense.create! valid_attributes
         patch expense_url(expense), params: { expense: new_attributes }
         expense.reload
-        skip("Add assertions for updated state")
+        expect(Expense.last.amount).to eql(230.0)
       end
 
       it "redirects to the expense" do
