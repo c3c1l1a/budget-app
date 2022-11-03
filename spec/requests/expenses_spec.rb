@@ -1,118 +1,113 @@
 require 'rails_helper'
 require_relative '../support/devise'
 
-RSpec.describe "/expenses", type: :request do
-
-  let(:user) {
+RSpec.describe '/expenses', type: :request do
+  let(:user) do
     user = create(:user)
-  }
+  end
 
-  before(:each ) {
+  before(:each) do
     sign_in user
     get root_path
-  }
+  end
 
-  let(:valid_attributes) {
+  let(:valid_attributes) do
     {
-        "name"=>"Mc Donalds", 
-        "description"=>"Expenses in Mc Donalds", 
-        "icon"=>"icon", 
-        "amount"=>"200",
-        "user_id"=> user.id
+      'name' => 'Mc Donalds',
+      'description' => 'Expenses in Mc Donalds',
+      'icon' => 'icon',
+      'amount' => '200',
+      'user_id' => user.id
     }
-  }
+  end
 
-  let(:invalid_attributes) {
+  let(:invalid_attributes) do
     {
-        "name"=>"", 
-        "description"=>"", 
-        "icon"=>"", 
-        "amount"=>"-2"
+      'name' => '',
+      'description' => '',
+      'icon' => '',
+      'amount' => '-2'
     }
-  }
+  end
 
-
-  describe "GET /index" do
-    it "renders a successful response" do
+  describe 'GET /index' do
+    it 'renders a successful response' do
       get expenses_url
       expect(response).to be_successful
     end
   end
 
-  describe "GET /new" do
-    it "renders a successful response" do
+  describe 'GET /new' do
+    it 'renders a successful response' do
       get new_expense_url
       expect(response).to be_successful
     end
   end
 
-  describe "GET /show" do
-    it "renders a successful response" do
+  describe 'GET /show' do
+    it 'renders a successful response' do
       expense = Expense.create! valid_attributes
-      
+
       get expense_url(expense)
       expect(response).to be_successful
     end
   end
 
-  
-  describe "GET /edit" do
-    it "renders a successful response" do
+  describe 'GET /edit' do
+    it 'renders a successful response' do
       expense = Expense.create! valid_attributes
       get edit_expense_url(expense)
       expect(response).to be_successful
     end
   end
 
-  describe "POST /create" do
-    context "with valid parameters" do
-      it "creates a new Expense" do
-        expect {
+  describe 'POST /create' do
+    context 'with valid parameters' do
+      it 'creates a new Expense' do
+        expect do
           post expenses_url, params: { expense: valid_attributes }
-        }.to change(Expense, :count).by(1)
+        end.to change(Expense, :count).by(1)
       end
 
-      it "redirects to the created expense" do
+      it 'redirects to the created expense' do
         post expenses_url, params: { expense: valid_attributes }
         expect(response).to redirect_to(expense_url(Expense.last))
       end
     end
 
-    context "with invalid parameters" do
-      it "does not create a new Expense" do
-        expect {
+    context 'with invalid parameters' do
+      it 'does not create a new Expense' do
+        expect do
           post expenses_url, params: { expense: invalid_attributes }
-        }.to change(Expense, :count).by(0)
+        end.to change(Expense, :count).by(0)
       end
 
-    
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post expenses_url, params: { expense: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
-    
     end
   end
 
-  describe "PATCH /update" do
-    context "with valid parameters" do
-      let(:new_attributes) {
+  describe 'PATCH /update' do
+    context 'with valid parameters' do
+      let(:new_attributes) do
         {
-            "name"=>"Mc Donalds", 
-            "description"=>"Expenses in Mc Donalds", 
-            "icon"=>"icon", 
-            "amount"=>"230"
+          'name' => 'Mc Donalds',
+          'description' => 'Expenses in Mc Donalds',
+          'icon' => 'icon',
+          'amount' => '230'
         }
-      }
+      end
 
-      it "updates the requested expense" do
+      it 'updates the requested expense' do
         expense = Expense.create! valid_attributes
         patch expense_url(expense), params: { expense: new_attributes }
         expense.reload
         expect(Expense.last.amount).to eql(230.0)
       end
 
-      it "redirects to the expense" do
+      it 'redirects to the expense' do
         expense = Expense.create! valid_attributes
         patch expense_url(expense), params: { expense: new_attributes }
         expense.reload
@@ -120,26 +115,24 @@ RSpec.describe "/expenses", type: :request do
       end
     end
 
-    context "with invalid parameters" do
-    
+    context 'with invalid parameters' do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         expense = Expense.create! valid_attributes
         patch expense_url(expense), params: { expense: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
-    
     end
   end
 
-  describe "DELETE /destroy" do
-    it "destroys the requested expense" do
+  describe 'DELETE /destroy' do
+    it 'destroys the requested expense' do
       expense = Expense.create! valid_attributes
-      expect {
+      expect do
         delete expense_url(expense)
-      }.to change(Expense, :count).by(-1)
+      end.to change(Expense, :count).by(-1)
     end
 
-    it "redirects to the expenses list" do
+    it 'redirects to the expenses list' do
       expense = Expense.create! valid_attributes
       delete expense_url(expense)
       expect(response).to redirect_to(expenses_url)

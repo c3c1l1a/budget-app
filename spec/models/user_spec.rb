@@ -17,10 +17,10 @@ RSpec.describe User, type: :model do
 
     it 'is valid with valid values' do
       expect(User.new({
-        name:'Jane', 
-        email:'jane_doe@email.com',
-        password: 'password'
-      })).to be_valid
+                        name: 'Jane',
+                        email: 'jane_doe@email.com',
+                        password: 'password'
+                      })).to be_valid
     end
   end
 end
