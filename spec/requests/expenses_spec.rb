@@ -17,7 +17,8 @@ RSpec.describe "/expenses", type: :request do
         "name"=>"Mc Donalds", 
         "description"=>"Expenses in Mc Donalds", 
         "icon"=>"icon", 
-        "amount"=>"200"
+        "amount"=>"200",
+        "user_id"=> user.id
     }
   }
 
@@ -47,7 +48,6 @@ RSpec.describe "/expenses", type: :request do
 
   describe "GET /show" do
     it "renders a successful response" do
-      valid_attributes['user_id'] = user.id
       expense = Expense.create! valid_attributes
       
       get expense_url(expense)
@@ -58,7 +58,6 @@ RSpec.describe "/expenses", type: :request do
   
   describe "GET /edit" do
     it "renders a successful response" do
-      valid_attributes['user_id'] = user.id
       expense = Expense.create! valid_attributes
       get edit_expense_url(expense)
       expect(response).to be_successful
@@ -107,7 +106,6 @@ RSpec.describe "/expenses", type: :request do
       }
 
       it "updates the requested expense" do
-        valid_attributes['user_id'] = user.id
         expense = Expense.create! valid_attributes
         patch expense_url(expense), params: { expense: new_attributes }
         expense.reload
@@ -115,7 +113,6 @@ RSpec.describe "/expenses", type: :request do
       end
 
       it "redirects to the expense" do
-        valid_attributes['user_id'] = user.id
         expense = Expense.create! valid_attributes
         patch expense_url(expense), params: { expense: new_attributes }
         expense.reload
@@ -126,7 +123,6 @@ RSpec.describe "/expenses", type: :request do
     context "with invalid parameters" do
     
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        valid_attributes['user_id'] = user.id
         expense = Expense.create! valid_attributes
         patch expense_url(expense), params: { expense: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
@@ -137,7 +133,6 @@ RSpec.describe "/expenses", type: :request do
 
   describe "DELETE /destroy" do
     it "destroys the requested expense" do
-      valid_attributes['user_id'] = user.id
       expense = Expense.create! valid_attributes
       expect {
         delete expense_url(expense)
@@ -145,7 +140,6 @@ RSpec.describe "/expenses", type: :request do
     end
 
     it "redirects to the expenses list" do
-      valid_attributes['user_id'] = user.id
       expense = Expense.create! valid_attributes
       delete expense_url(expense)
       expect(response).to redirect_to(expenses_url)
