@@ -3,7 +3,7 @@ require_relative '../support/devise'
 
 RSpec.describe '/expenses', type: :request do
   let(:user) do
-    user = create(:user)
+    create(:user)
   end
 
   before(:each) do
