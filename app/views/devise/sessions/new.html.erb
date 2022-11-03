@@ -6,29 +6,24 @@
     <h2 class="flex-[0_0_75%] text-center h-min font-proxima font-semibold text-white">LOGIN</h2>
   </div>
   
-  <div class=""><%= image_tag "Logo.png"%></div>
+  <div><%= image_tag "Logo.png"%></div>
+  <h1>Welcome back</h1>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name),
+               html: { class: 'flex flex-col items-center py-10 gap-4' }
+              ) do |f| %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email', 
+                                class: 'w-full p-3 shadow-inner border-y-slate-300 border-x-transparent font-proxima'
+                            %>
+      <%= f.password_field :password, autocomplete: "current-password", placeholder: 'Password',
+                                class: 'w-full p-3 shadow-inner border-y-slate-300 border-x-transparent font-proxima'
+                            %>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "current-password" %>
-    </div>
-
-    <% if devise_mapping.rememberable? %>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
+      <div class="p-3 flex justify-center bg-main-color text-white  w-full bg-second-color">
+        <%= f.submit "Log in", class: "font-proxima w-11/12 p-3 border-2 border-white rounded font-semibold text-lg"  %>
       </div>
-    <% end %>
+      
 
-    <div class="actions">
-      <%= f.submit "Log in" %>
-    </div>
+
   <% end %>
 
   <%= render "devise/shared/links" %>  
