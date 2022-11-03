@@ -11,4 +11,7 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe ExpensesHelper, type: :helper do
+  it 'does nothing for now' do
+    expect(true).to eql(true)
+  end
 end
