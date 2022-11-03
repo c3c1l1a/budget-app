@@ -11,14 +11,14 @@ RSpec.describe 'expenses/index', type: :view do
                description: 'Description',
                icon: 'Icon',
                amount: 2,
-               user: user
+               user:
              ),
              Expense.create!(
                name: 'Name',
                description: 'Description',
                icon: 'Icon',
                amount: 2,
-               user: user
+               user:
              )
            ])
   end

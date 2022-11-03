@@ -11,7 +11,7 @@ RSpec.describe 'expenses/show', type: :view do
                        description: 'Description',
                        icon: 'Icon',
                        amount: 2,
-                       user: user
+                       user:
                      ))
   end
 
