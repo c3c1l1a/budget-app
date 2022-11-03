@@ -1,13 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe 'expenses/new', type: :view do
+  let(:user) do
+    create(:user)
+  end
+
   before(:each) do
     assign(:expense, Expense.new(
                        name: 'MyString',
                        description: 'MyString',
                        icon: 'MyString',
                        amount: 1,
-                       user: nil
+                       user: user
                      ))
   end
 
@@ -22,8 +26,6 @@ RSpec.describe 'expenses/new', type: :view do
       assert_select 'input[name=?]', 'expense[icon]'
 
       assert_select 'input[name=?]', 'expense[amount]'
-
-      assert_select 'input[name=?]', 'expense[user_id]'
     end
   end
 end
