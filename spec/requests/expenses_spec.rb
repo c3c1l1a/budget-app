@@ -115,6 +115,7 @@ RSpec.describe "/expenses", type: :request do
       end
 
       it "redirects to the expense" do
+        valid_attributes['user_id'] = user.id
         expense = Expense.create! valid_attributes
         patch expense_url(expense), params: { expense: new_attributes }
         expense.reload
