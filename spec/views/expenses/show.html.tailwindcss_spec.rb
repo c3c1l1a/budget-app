@@ -1,13 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe 'expenses/show', type: :view do
+  let(:user) do
+    create(:user)
+  end
+
   before(:each) do
     assign(:expense, Expense.create!(
                        name: 'Name',
                        description: 'Description',
                        icon: 'Icon',
                        amount: 2,
-                       user: nil
+                       user: user
                      ))
   end
 

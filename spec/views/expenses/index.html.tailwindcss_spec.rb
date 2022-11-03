@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'expenses/index', type: :view do
+  let(:user) do
+    create(:user)
+  end
   before(:each) do
     assign(:expenses, [
              Expense.create!(
@@ -8,14 +11,14 @@ RSpec.describe 'expenses/index', type: :view do
                description: 'Description',
                icon: 'Icon',
                amount: 2,
-               user: nil
+               user: user
              ),
              Expense.create!(
                name: 'Name',
                description: 'Description',
                icon: 'Icon',
                amount: 2,
-               user: nil
+               user: user
              )
            ])
   end
