@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :expenses do
+  resources :expenses, only: %i[index show create new destroy]do
     resources :details
   end
   
