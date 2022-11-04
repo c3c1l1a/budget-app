@@ -12,7 +12,7 @@ RSpec.describe '/expenses/1/details', type: :request do
 
   before(:each) do
     sign_in user
-    get root_path
+    get expense_details_url(expense)
   end
 
   describe 'GET /index' do
