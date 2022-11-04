@@ -24,10 +24,13 @@ class DetailsController < ApplicationController
   def create
     @detail = @expense.details.build(detail_params)
 
-    if @detail.save
-      redirect_to([@detail.expense, @detail], notice: 'Detail was successfully created.')
-    else
-      render action: 'new'
+    respond_to do |format|
+      if @detail.save
+        format.html { redirect_to([@detail.expense, @detail], notice: 'Detail was successfully created.')}
+        
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 
