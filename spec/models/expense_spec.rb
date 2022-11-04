@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Expense, type: :model do
-  @user = User.new(name: 'Cecilia', email: 'test@gmail.com', password: '123456')
+  let (:user) do 
+    create(:user)
+  end
   subject do
     Expense.new(
-      user: @user,
+      user: user,
       name: 'Mc Donalds',
       description: 'Lots of cash spent here',
       icon: 'icon url',
