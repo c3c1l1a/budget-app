@@ -72,8 +72,8 @@ RSpec.describe '/details', type: :request do
       end
 
       it 'redirects to the created Detail' do
-        post expense_url(expense), params: { detail: valid_attributes }
-        expect(response).to redirect_to(expense_detail_url(expense, Detail.last))
+        post details_url, params: { detail: valid_attributes }
+        expect(response).to redirect_to(expense_url(Detail.last.expense))
       end
     end
 
