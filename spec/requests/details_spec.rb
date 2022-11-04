@@ -63,10 +63,10 @@ RSpec.describe '/expenses/1/details', type: :request do
         end.to change(Detail, :count).by(1)
       end
 
-      # it 'redirects to the created expense' do
-      #   post expenses_url, params: { expense: valid_attributes }
-      #   expect(response).to redirect_to(expense_url(Expense.last))
-      # end
+      it 'redirects to the created Detail' do
+        post expense_details_url(expense), params: { detail: valid_attributes }
+        expect(response).to redirect_to(expense_detail_url(expense, Detail.last))
+      end
     end
 
     # context 'with invalid parameters' do
