@@ -1,4 +1,4 @@
-<%= form_with(model: detail, class: "contents") do |form| %>
+<%= form_with(model: [detail, detail.expense.create], class: "contents") do |form| %>
 
   <div class="my-5">
     <%= form.label :transaction_detail %>
@@ -14,7 +14,7 @@
     <%= form.select :food_id, Expense.all.collect {|food| [food.name, food.id]},{
     include_blank: true} , class:"form-select" %>
   </div>
-  
+
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-black inline-block font-medium cursor-pointer" %>
   </div>

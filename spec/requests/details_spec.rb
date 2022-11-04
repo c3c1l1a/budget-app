@@ -48,7 +48,7 @@ RSpec.describe '/details', type: :request do
   # describe 'GET /show' do
   #   it 'renders a successful response' do
   #     detail = Detail.create! valid_attributes
-  #     get expense_detail_url(expense, detail)
+  #     get detail_url(detail)
       
   #     expect(response).to be_successful
   #   end
@@ -63,32 +63,32 @@ RSpec.describe '/details', type: :request do
   #   end
   # end
 
-  # describe 'POST /create' do
-  #   context 'with valid parameters' do
-  #     it 'creates a new Detail' do
-  #       expect do
-  #         post expense_details_url(expense), params: { detail: valid_attributes }
-  #       end.to change(Detail, :count).by(1)
-  #     end
+  describe 'POST /create' do
+    context 'with valid parameters' do
+      it 'creates a new Detail' do
+        expect do
+          post details_url, params: { detail: valid_attributes }
+        end.to change(Detail, :count).by(1)
+      end
 
-  #     it 'redirects to the created Detail' do
-  #       post expense_details_url(expense), params: { detail: valid_attributes }
-  #       expect(response).to redirect_to(expense_detail_url(expense, Detail.last))
-  #     end
-  #   end
+      # it 'redirects to the created Detail' do
+      #   post expense_details_url(expense), params: { detail: valid_attributes }
+      #   expect(response).to redirect_to(expense_detail_url(expense, Detail.last))
+      # end
+    end
 
-  #   context 'with invalid parameters' do
-  #     it 'does not create a new Expense' do
-  #       expect do
-  #         post expense_details_url(expense), params: { detail: invalid_attributes }
-  #       end.to change(Detail, :count).by(0)
-  #     end
+    # context 'with invalid parameters' do
+    #   it 'does not create a new Expense' do
+    #     expect do
+    #       post expense_details_url(expense), params: { detail: invalid_attributes }
+    #     end.to change(Detail, :count).by(0)
+    #   end
 
-  #     it "renders a response with 422 status (i.e. to display the 'new' template)" do
-  #       post expense_details_url(expense), params: { detail: invalid_attributes }
-  #       expect(response).to have_http_status(:unprocessable_entity)
-  #     end
-  #   end
-  # end
+    #   it "renders a response with 422 status (i.e. to display the 'new' template)" do
+    #     post expense_details_url(expense), params: { detail: invalid_attributes }
+    #     expect(response).to have_http_status(:unprocessable_entity)
+    #   end
+    # end
+  end
 
 end
