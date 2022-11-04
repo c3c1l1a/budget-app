@@ -16,7 +16,6 @@ RSpec.describe '/expenses', type: :request do
       'name' => 'Mc Donalds',
       'description' => 'Expenses in Mc Donalds',
       'icon' => 'icon',
-      'amount' => '200',
       'user_id' => user.id
     }
   end
@@ -26,7 +25,6 @@ RSpec.describe '/expenses', type: :request do
       'name' => '',
       'description' => '',
       'icon' => '',
-      'amount' => '-2'
     }
   end
 
@@ -94,9 +92,8 @@ RSpec.describe '/expenses', type: :request do
       let(:new_attributes) do
         {
           'name' => 'Mc Donalds',
-          'description' => 'Expenses in Mc Donalds',
-          'icon' => 'icon',
-          'amount' => '230'
+          'description' => 'Updated description',
+          'icon' => 'icon'
         }
       end
 
@@ -104,7 +101,7 @@ RSpec.describe '/expenses', type: :request do
         expense = Expense.create! valid_attributes
         patch expense_url(expense), params: { expense: new_attributes }
         expense.reload
-        expect(Expense.last.amount).to eql(230.0)
+        expect(Expense.last.description).to eql(new_attributes['description'])
       end
 
       it 'redirects to the expense' do
