@@ -5,6 +5,10 @@ class ExpensesController < ApplicationController
   # GET /expenses or /expenses.json
   def index
     @expenses = Expense.all
+    @totals = {}
+    @expenses.each do |expense|
+      @totals[expense.id.to_s] = sum(expense.details)
+    end
   end
 
   # GET /expenses/1 or /expenses/1.json

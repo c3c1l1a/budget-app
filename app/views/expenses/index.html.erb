@@ -11,7 +11,8 @@
     <% end %>
 
     <div id="expenses" class="min-w-full">
-      <%= render @expenses %>
+      <% pp @totals %>
+      <%= render @expenses, total: @totals  %>
     </div>
 
     <div class="flex justify-center py-10">
