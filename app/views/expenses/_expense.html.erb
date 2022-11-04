@@ -14,7 +14,7 @@
           </div>
         </div>
         <div class="text-xs p-2">
-          <%= expense.created_at %>
+          <%= expense.created_at.to_formatted_s(:short)  %>
         </div> 
       </div>
     </div>
