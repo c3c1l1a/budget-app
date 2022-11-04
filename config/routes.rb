@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :details
   end
   
-  resources :home, path: '/', only: %i[index]
+  resources :home, only: %i[index]
   devise_for :users, path: '/', path_names: {
     sign_in: 'login'
   }, controllers: {
