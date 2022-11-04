@@ -10,7 +10,6 @@ RSpec.describe Expense, type: :model do
       name: 'Mc Donalds',
       description: 'Lots of cash spent here',
       icon: 'icon url',
-      amount: '20'
     )
   end
   before { subject.save }
@@ -66,16 +65,6 @@ RSpec.describe Expense, type: :model do
 
     it 'description should longer than 3 characters' do
       subject.description = 'de'
-      expect(subject).to_not be_valid
-    end
-
-    it 'amount should not be less than 0' do
-      subject.amount = -5
-      expect(subject).to_not be_valid
-    end
-
-    it 'amount should not be nil' do
-      subject.amount = nil
       expect(subject).to_not be_valid
     end
   end
