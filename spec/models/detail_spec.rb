@@ -32,9 +32,12 @@ RSpec.describe Detail, type: :model do
 
     it 'amount should be present' do 
       subject.amount = nil
-      
+      expect(subject).to_not be_valid
     end 
-    it 'amount should not be blank'
-    it 'amount should be >= 0'
+
+    it 'amount should be >= 0' do 
+      subject.amount = -5
+      expect(subject).to_not be_valid
+    end 
   end
 end
