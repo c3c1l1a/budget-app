@@ -14,6 +14,7 @@ class DetailsController < ApplicationController
   # GET expenses/1/details/new
   def new
     @detail = Detail.new
+    pp @detail.errors.any?
   end
 
   # GET expenses/1/details/1/edit
@@ -22,12 +23,12 @@ class DetailsController < ApplicationController
 
   # POST expenses/1/details
   def create
-    @detail = @expense.details.build(detail_params)
+    @detail = Detail.new(detail_params)
+    # @detail = @expense.details.build(detail_params)
 
     respond_to do |format|
       if @detail.save
         format.html { redirect_to([@detail.expense, @detail], notice: 'Detail was successfully created.')}
-        
       else
         format.html { render :new, status: :unprocessable_entity }
       end
