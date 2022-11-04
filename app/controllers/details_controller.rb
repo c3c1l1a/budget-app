@@ -51,6 +51,7 @@ class DetailsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_expense
       @expense = Expense.find(params[:expense_id])
+
     end
 
     def set_detail

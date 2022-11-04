@@ -10,6 +10,13 @@ RSpec.describe '/expenses/1/details', type: :request do
     create(:expense, user_id: user.id)
   end
 
+  let(:valid_attributes) do
+    {
+      'name' => 'Transaction 1',
+      'amount' => '200'
+    }
+  end
+
   before(:each) do
     sign_in user
     get root_path
@@ -28,4 +35,15 @@ RSpec.describe '/expenses/1/details', type: :request do
       expect(response).to be_successful
     end
   end
+
+  describe 'GET /show' do
+    it 'renders a successful response' do
+      valid_attributes['expense_id'] = expense.id
+      detail = Detail.create! valid_attributes
+      get expense_detail_url(expense, detail)
+      
+      expect(response).to be_successful
+    end
+  end
+
 end
