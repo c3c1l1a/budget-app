@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :expenses, only: %i[index show create new destroy]do
-    resources :details
-  end
+  resources :details
+  resources :expenses, only: %i[index show create new destroy] 
+
   
   resources :home, only: %i[index]
   devise_for :users, path: '/', path_names: {

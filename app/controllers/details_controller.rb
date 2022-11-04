@@ -1,10 +1,10 @@
 class DetailsController < ApplicationController
-  before_action :set_expense
+  before_action :authenticate_user!
   before_action :set_detail, only: [:show, :edit, :update, :destroy]
 
   # GET expenses/1/details
   def index
-    @details = @expense.details
+    @details = Detail.all
   end
 
   # GET expenses/1/details/1
@@ -13,7 +13,7 @@ class DetailsController < ApplicationController
 
   # GET expenses/1/details/new
   def new
-    @detail = @expense.details.build
+    @detail = Detail.new
   end
 
   # GET expenses/1/details/1/edit
@@ -51,14 +51,8 @@ class DetailsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_expense
-      @expense = Expense.find(params[:expense_id])
-
-    end
-
     def set_detail
-      @detail = @expense.details.find(params[:id])
+      @detail = Detail.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
