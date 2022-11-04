@@ -15,7 +15,10 @@ RSpec.describe Detail, type: :model do
 
 
   describe 'model validations' do
-    it 'name should be present' 
+    it 'name should be present' do
+      subject.name = nil
+      expect(subject).to_not be_valid
+    end 
     it 'name should not be blank'
     it 'name should be > 3 characters'
     it 'amount should be present'
