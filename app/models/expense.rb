@@ -1,4 +1,5 @@
 class Expense < ApplicationRecord
+  has_many :details
   belongs_to :user
 
   validates :name, presence: { message: "Name can't be null" }, length: { in: 3..10 }
