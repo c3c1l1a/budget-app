@@ -1,0 +1,35 @@
+<div class="w-full flex flex-col relative">
+  <div class="flex items-center bg-main-color py-2">
+    <%= link_to '/' do %>
+      <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" class="scale-75 fill-white "><path d="M24 40 8 24 24 8l2.1 2.1-12.4 12.4H40v3H13.7l12.4 12.4Z"/></svg>
+    <% end %>
+    <h2 class="flex-[0_0_75%] text-center h-min font-proxima font-semibold text-white">LOGIN</h2>
+  </div>
+  
+  <div class=" flex flex-col items-center py-10 gap-4">
+    <div><%= image_tag "Logo.png"%></div>
+    <h1 class="font-thin text-4xl text-gray-600">Welcome back</h1>
+  </div>
+  
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name),
+               html: { class: 'flex flex-col items-center py-10 gap-4' }
+              ) do |f| %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email', 
+                                class: 'w-full p-3 shadow-inner border-y-slate-300 border-x-transparent font-proxima'
+                            %>
+      <%= f.password_field :password, autocomplete: "current-password", placeholder: 'Password',
+                                class: 'w-full p-3 shadow-inner border-y-slate-300 border-x-transparent font-proxima'
+                            %>
+      <div class="right-4 top-2 py-2 h-12 flex absolute">
+        <%= f.submit "Login", class: "font-proxima font-light text-white"  %>
+      </div>
+        
+    
+      
+
+
+  <% end %>
+
+  <%= render "devise/shared/links" %>  
+</div>
+
