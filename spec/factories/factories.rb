@@ -5,4 +5,12 @@ FactoryBot.define do
     password { 'password' }
     password_confirmation { 'password' }
   end
+
+  factory :expense do
+    user { user }
+    name { 'Mc Donalds' }
+    description { "Lots of cash spent here" }
+    icon { 'Icon Url' }
+    amount '300'
+  end
 end

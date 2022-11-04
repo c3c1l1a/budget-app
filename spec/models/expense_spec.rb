@@ -5,8 +5,8 @@ RSpec.describe Expense, type: :model do
   subject do
     Expense.new(
       user: @user,
-      name: 'Hello',
-      description: 'Inventory Desc',
+      name: 'Mc Donalds',
+      description: 'Lots of cash spent here',
       icon: 'icon url',
       amount: '20'
     )
