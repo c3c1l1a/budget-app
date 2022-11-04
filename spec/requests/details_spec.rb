@@ -18,6 +18,14 @@ RSpec.describe '/expenses/1/details', type: :request do
     }
   end
 
+  let(:invalid_attributes) do
+    {
+      'name' => '',
+      'amount' => '-2',
+      'expense_id' => expense.id
+    }
+  end
+
   before(:each) do
     sign_in user
     get root_path
@@ -69,18 +77,18 @@ RSpec.describe '/expenses/1/details', type: :request do
       end
     end
 
-    # context 'with invalid parameters' do
-    #   it 'does not create a new Expense' do
-    #     expect do
-    #       post expenses_url, params: { expense: invalid_attributes }
-    #     end.to change(Expense, :count).by(0)
-    #   end
+    context 'with invalid parameters' do
+      it 'does not create a new Expense' do
+        expect do
+          post expense_details_url(expense), params: { detail: invalid_attributes }
+        end.to change(Detail, :count).by(0)
+      end
 
-    #   it "renders a response with 422 status (i.e. to display the 'new' template)" do
-    #     post expenses_url, params: { expense: invalid_attributes }
-    #     expect(response).to have_http_status(:unprocessable_entity)
-    #   end
-    # end
+      # it "renders a response with 422 status (i.e. to display the 'new' template)" do
+      #   post expenses_url, params: { expense: invalid_attributes }
+      #   expect(response).to have_http_status(:unprocessable_entity)
+      # end
+    end
   end
 
 end
