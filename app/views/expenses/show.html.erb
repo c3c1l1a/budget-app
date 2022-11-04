@@ -1,14 +1,12 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+<div class="mx-auto md:w-2/3 w-full flex flex-col">
+  <div class="flex items-center bg-main-color py-2">
+    <%= link_to expenses_path do %>
+      <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" class="scale-75 fill-white "><path d="M24 40 8 24 24 8l2.1 2.1-12.4 12.4H40v3H13.7l12.4 12.4Z"/></svg>
     <% end %>
-
-    <%= render @expense %>
-
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this expense', expense_path(@expense), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-    </div>
-    <%= link_to 'Back to expenses', expenses_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <h2 class="flex-[0_0_75%] text-center h-min font-proxima font-semibold text-white">Details</h2>
+    <%= button_to expense_path(@expense), method: :delete do %>
+      <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" class="scale-75 fill-white "><path d="M18.05 33.05 24 27l6 6.05 2.35-2.4-5.95-6.05 5.95-6.05-2.35-2.4-6 6.05-5.95-6.05-2.4 2.4 6 6.05-6 6.05Zm-5 8.95q-1.2 0-2.1-.9-.9-.9-.9-2.1V10.5H8v-3h9.4V6h13.2v1.5H40v3h-2.05V39q0 1.2-.9 2.1-.9.9-2.1.9Zm21.9-31.5h-21.9V39h21.9Zm-21.9 0V39Z"/></svg>
+    <% end %>
   </div>
+  <%= render @expense %>
 </div>
