@@ -6,6 +6,10 @@ RSpec.describe '/expenses/1/details', type: :request do
     create(:user)
   end
 
+  let(:expense) do 
+    create(:expense, user_id: user.id)
+  end
+
   before(:each) do
     sign_in user
     get root_path
@@ -13,7 +17,6 @@ RSpec.describe '/expenses/1/details', type: :request do
 
   describe 'GET /index' do
     it 'renders a successful response' do
-      
       expect(true).to eql(true)
     end
   end
