@@ -13,4 +13,10 @@ FactoryBot.define do
     icon { 'Icon Url' }
     amount { '300' }
   end
+
+  factory :detail do
+    association :expense, factory: :expense
+    name { 'Transaction 1' }
+    amount { '300' }
+  end
 end
