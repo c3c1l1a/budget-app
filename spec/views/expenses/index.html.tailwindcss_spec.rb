@@ -10,14 +10,12 @@ RSpec.describe 'expenses/index', type: :view do
                name: 'Name',
                description: 'Description',
                icon: 'Icon',
-               amount: 2,
                user:
              ),
              Expense.create!(
                name: 'Name',
                description: 'Description',
                icon: 'Icon',
-               amount: 2,
                user:
              )
            ])
@@ -29,6 +27,5 @@ RSpec.describe 'expenses/index', type: :view do
     assert_select cell_selector, text: Regexp.new('Name'.to_s), count: 2
     assert_select cell_selector, text: Regexp.new('Description'.to_s), count: 2
     assert_select cell_selector, text: Regexp.new('Icon'.to_s), count: 2
-    assert_select cell_selector, text: Regexp.new(2.to_s), count: 2
   end
 end

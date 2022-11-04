@@ -10,7 +10,6 @@ RSpec.describe 'expenses/new', type: :view do
                        name: 'MyString',
                        description: 'MyString',
                        icon: 'MyString',
-                       amount: 1,
                        user:
                      ))
   end
@@ -24,8 +23,6 @@ RSpec.describe 'expenses/new', type: :view do
       assert_select 'input[name=?]', 'expense[description]'
 
       assert_select 'input[name=?]', 'expense[icon]'
-
-      assert_select 'input[name=?]', 'expense[amount]'
     end
   end
 end
