@@ -12,12 +12,20 @@ RSpec.describe '/expenses/1/details', type: :request do
 
   before(:each) do
     sign_in user
-    get expense_details_url(expense)
+    get root_path
   end
 
   describe 'GET /index' do
     it 'renders a successful response' do
-      expect(true).to eql(true)
+      get expense_details_url(expense)
+      expect(response).to be_successful
+    end
+  end
+
+  describe 'GET /new' do
+    it 'renders a successful response' do
+      get new_expense_detail_url(expense)
+      expect(response).to be_successful
     end
   end
 end
