@@ -8,7 +8,7 @@ RSpec.describe 'expenses/index', type: :view do
   
   before(:each) do
     assign(:expenses, [
-      create(:expense)
+      create(:expense, user_id: user.id)
     ])
   end
 
