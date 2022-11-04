@@ -8,5 +8,39 @@
       <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" class="scale-75 fill-white "><path d="M18.05 33.05 24 27l6 6.05 2.35-2.4-5.95-6.05 5.95-6.05-2.35-2.4-6 6.05-5.95-6.05-2.4 2.4 6 6.05-6 6.05Zm-5 8.95q-1.2 0-2.1-.9-.9-.9-.9-2.1V10.5H8v-3h9.4V6h13.2v1.5H40v3h-2.05V39q0 1.2-.9 2.1-.9.9-2.1.9Zm21.9-31.5h-21.9V39h21.9Zm-21.9 0V39Z"/></svg>
     <% end %>
   </div>
-  <%= render @expense %>
+
+  <div class="flex flex-col bg-white shadow-lg m-5 text-slate-500">
+    <div class="flex items-center">
+      <div class="py-2">
+        <%= image_tag "Logo.png"%>
+      </div>
+      <div>
+        <%= @expense.name %>
+      </div>
+    </div>
+    <div class="p-3 border-b-slate-50 border-b-4">
+      <p>
+        <%= @expense.description %> 
+      </p>
+    </div>
+
+    <div class="flex flex-col py-3 border-b-slate-50 border-b-4">
+      <div class="px-3">
+        Transaction N-00000000
+      </div>
+      <div class="flex items-center">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" class="scale-50 fill-slate-400"><path d="M15.3 28.3q-.85 0-1.425-.575-.575-.575-.575-1.425 0-.85.575-1.425.575-.575 1.425-.575.85 0 1.425.575.575.575.575 1.425 0 .85-.575 1.425-.575.575-1.425.575Zm8.85 0q-.85 0-1.425-.575-.575-.575-.575-1.425 0-.85.575-1.425.575-.575 1.425-.575.85 0 1.425.575.575.575.575 1.425 0 .85-.575 1.425-.575.575-1.425.575Zm8.5 0q-.85 0-1.425-.575-.575-.575-.575-1.425 0-.85.575-1.425.575-.575 1.425-.575.85 0 1.425.575.575.575.575 1.425 0 .85-.575 1.425-.575.575-1.425.575ZM9 44q-1.2 0-2.1-.9Q6 42.2 6 41V10q0-1.2.9-2.1Q7.8 7 9 7h3.25V4h3.25v3h17V4h3.25v3H39q1.2 0 2.1.9.9.9.9 2.1v31q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h30V19.5H9V41Zm0-24.5h30V10H9Zm0 0V10v6.5Z"/></svg>
+        </div>
+        <div class="text-xs text-slate-400"><%= @expense.created_at %></div>
+      </div>
+    </div>
+
+    <div class="flex justify-between p-3">
+      <h2>TOTAL PAYMENT</h2>
+      <p class="font-bold">$20.00</p>
+    </div>
+    
+  </div>
+  
 </div>
