@@ -2,9 +2,7 @@ Rails.application.routes.draw do
   resources :expenses do
     resources :details
   end
-  namespace :expense do
-    resources :details
-  end
+  
   resources :home, path: '/', only: %i[index]
   devise_for :users, path: '/', path_names: {
     sign_in: 'login'
