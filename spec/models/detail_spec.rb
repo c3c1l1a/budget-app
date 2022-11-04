@@ -19,7 +19,12 @@ RSpec.describe Detail, type: :model do
       subject.name = nil
       expect(subject).to_not be_valid
     end 
-    it 'name should not be blank'
+
+    it 'name should not be blank' do 
+      subject.name = ''
+      expect(subject).to_not be_valid
+    end
+    
     it 'name should be > 3 characters'
     it 'amount should be present'
     it 'amount should not be blank'
