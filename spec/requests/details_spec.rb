@@ -13,7 +13,8 @@ RSpec.describe '/expenses/1/details', type: :request do
   let(:valid_attributes) do
     {
       'name' => 'Transaction 1',
-      'amount' => '200'
+      'amount' => '200',
+      'expense_id' => expense.id
     }
   end
 
@@ -38,9 +39,17 @@ RSpec.describe '/expenses/1/details', type: :request do
 
   describe 'GET /show' do
     it 'renders a successful response' do
-      valid_attributes['expense_id'] = expense.id
       detail = Detail.create! valid_attributes
       get expense_detail_url(expense, detail)
+      
+      expect(response).to be_successful
+    end
+  end
+
+  describe 'GET /edit' do
+    it 'renders a successful response' do
+      detail = Detail.create! valid_attributes
+      get edit_expense_detail_url(expense, detail)
       
       expect(response).to be_successful
     end
