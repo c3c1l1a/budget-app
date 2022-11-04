@@ -9,7 +9,7 @@ RSpec.describe 'expenses/show', type: :view do
     assign(:expense, Expense.create!(
                        name: 'Name',
                        description: 'Description',
-                       icon: 'Icon',
+                       icon: 'Logo.png',
                        user:
                      ))
   end
@@ -18,7 +18,6 @@ RSpec.describe 'expenses/show', type: :view do
     render
     expect(rendered).to match(/Name/)
     expect(rendered).to match(/Description/)
-    expect(rendered).to match(/Icon/)
     expect(rendered).to match(/2/)
     expect(rendered).to match(//)
   end
