@@ -14,7 +14,7 @@ class ExpensesController < ApplicationController
   # GET /expenses/1 or /expenses/1.json
   def show
     @amount = sum(@expense.details)
-    @details = @expense.details.order('created_at DESC')
+    @details = @expense.details.order('created_at DESC').limit(3)
   end
 
   # GET /expenses/new
