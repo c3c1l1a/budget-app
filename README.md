@@ -6,7 +6,10 @@
 - Used RSpec as the test suit 
 
 ## Live site 
-https://pennywise.wayan.dev
+[Penny Wise](https://pennywise.wayan.dev)
+
+## Video presentation
+[Video](https://www.loom.com/share/0802ca1f48b24e5db3ffd6b9aed4d411)
 
 
 ## Getting Started
@@ -73,6 +76,7 @@ Give a ⭐️ if you like this project!
 - Hat tip to anyone whose code was used
 - Inspiration
 - etc
+- Original design idea by [Gregoire Vella on Behance](https://www.behance.net/gregoirevella)
 
 ## 📝 License
 
