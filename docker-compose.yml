@@ -1,0 +1,34 @@
+version: "3"
+
+services: 
+  rails: 
+    build: rails_image
+    volumes:
+      - ./:/home/app
+      - ./bundle_cache:/usr/local/bundle
+    #ports:
+    #  - 3000:80
+    networks:
+      - proxy-network
+    environment:
+      PORT: 80
+      VIRTUAL_HOST: pennywise.wayan.dev
+      LETSENCRYPT_HOST: pennywise.wayan.dev
+
+  postgres:
+    image: postgres:latest
+    volumes: 
+      - db:/var/lib/postgresql/data
+    networks:
+      - proxy-network
+    environment:
+      POSTGRES_PASSWORD: 1234
+      PGDATA: /var/lib/postgresql/data/pgdata
+
+volumes:
+  db: {}
+
+networks:
+  proxy-network: 
+    name: proxy-network
+
