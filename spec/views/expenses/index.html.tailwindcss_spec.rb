@@ -5,11 +5,10 @@ RSpec.describe 'expenses/index', type: :view do
     create(:user)
   end
 
-  
   before(:each) do
     assign(:expenses, [
-      create(:expense, user_id: user.id)
-    ])
+             create(:expense, user_id: user.id)
+           ])
   end
 
   it 'renders a list of expenses' do

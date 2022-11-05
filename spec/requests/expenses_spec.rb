@@ -24,7 +24,7 @@ RSpec.describe '/expenses', type: :request do
     {
       'name' => '',
       'description' => '',
-      'icon' => '',
+      'icon' => ''
     }
   end
 

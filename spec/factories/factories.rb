@@ -9,7 +9,7 @@ FactoryBot.define do
   factory :expense do
     association :user, factory: :user
     name { 'Mc Donalds' }
-    description { "Lots of cash spent here" }
+    description { 'Lots of cash spent here' }
     icon { 'Icon Url' }
   end
 

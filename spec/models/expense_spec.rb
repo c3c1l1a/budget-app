@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Expense, type: :model do
-  let (:user) do 
+  let(:user) do
     create(:user)
   end
   subject do
     Expense.new(
-      user: user,
+      user:,
       name: 'Mc Donalds',
       description: 'Lots of cash spent here',
-      icon: 'icon url',
+      icon: 'icon url'
     )
   end
   before { subject.save }
@@ -68,5 +68,4 @@ RSpec.describe Expense, type: :model do
       expect(subject).to_not be_valid
     end
   end
-  
 end

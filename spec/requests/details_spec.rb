@@ -6,7 +6,7 @@ RSpec.describe '/details', type: :request do
     create(:user)
   end
 
-  let(:expense) do 
+  let(:expense) do
     create(:expense, user_id: user.id)
   end
 
@@ -49,7 +49,7 @@ RSpec.describe '/details', type: :request do
   #   it 'renders a successful response' do
   #     detail = Detail.create! valid_attributes
   #     get detail_url(detail)
-      
+
   #     expect(response).to be_successful
   #   end
   # end
@@ -90,5 +90,4 @@ RSpec.describe '/details', type: :request do
       end
     end
   end
-
 end
