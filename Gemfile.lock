@@ -73,6 +73,9 @@ GEM
     bootsnap (1.13.0)
       msgpack (~> 1.2)
     builder (3.2.4)
+    bullet (7.0.3)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     capybara (3.37.1)
       addressable
       matrix
@@ -125,6 +128,7 @@ GEM
     mini_mime (1.1.2)
     minitest (5.16.3)
     msgpack (1.6.0)
+    nested_scaffold (1.1.0)
     net-imap (0.3.1)
       net-protocol
     net-pop (0.1.2)
@@ -221,6 +225,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
+    uniform_notifier (1.16.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -245,12 +250,14 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  bullet
   capybara
   debug
   devise
   factory_bot_rails
   importmap-rails
   jbuilder
+  nested_scaffold
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4)

@@ -18,9 +18,9 @@
     ) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
-    <%= f.text_field :name, autofocus: true, autocomplete: "name",  placeholder: 'Email',
+    <%= f.text_field :name, autofocus: true, autocomplete: "name",  placeholder: 'Name',
       class: 'w-full p-3 shadow-inner border-y-slate-300 border-x-transparent font-proxima' %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Password',
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email',
       class: 'w-full p-3 shadow-inner border-y-slate-300 border-x-transparent font-proxima' %>
 
    

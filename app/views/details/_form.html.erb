@@ -1,0 +1,21 @@
+<%= form_with(model: [detail, ], class: "contents") do |form| %>
+
+  <div class="my-5">
+    <%= form.label :transaction_detail %>
+    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :amount %>
+    <%= form.number_field :amount, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div>
+    <%= form.select :expense_id, Expense.all.collect {|expense| [expense.name, expense.id]},{
+    include_blank: true} , class:"form-select" %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-black inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

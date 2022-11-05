@@ -4,11 +4,18 @@ class ExpensesController < ApplicationController
 
   # GET /expenses or /expenses.json
   def index
-    @expenses = Expense.all
+    @expenses = Expense.all.includes(:details)
+    @totals = {}
+    @expenses.each do |expense|
+      @totals[expense.id.to_s] = sum(expense.details)
+    end
   end
 
   # GET /expenses/1 or /expenses/1.json
-  def show; end
+  def show
+    @amount = sum(@expense.details)
+    @details = @expense.details.order('created_at DESC').limit(3)
+  end
 
   # GET /expenses/new
   def new
@@ -67,5 +74,13 @@ class ExpensesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def expense_params
     params.require(:expense).permit(:name, :description, :icon, :amount)
+  end
+
+  def sum(details)
+    total = 0
+    details.each do |detail|
+      total += detail.amount
+    end
+    total
   end
 end
